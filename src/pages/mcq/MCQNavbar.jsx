@@ -17,6 +17,7 @@ function MCQNavbar({
   const [hasStarted, setHasStarted] = useState(false);
   const [hasEnded, setHasEnded] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [coins, setCoins] = useState(100); // Sample coin count, you can fetch from the API or state
 
   const navigate = useNavigate();
 
@@ -48,6 +49,7 @@ function MCQNavbar({
 
     return () => clearInterval(timer); // Cleanup on unmount
   }, [challenge]);
+
   return (
     <div className="w-full h-[8vh] flex justify-between items-center px-8 bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-md">
       {/* Left Section: Home Link, Divider, Contest Name, and View Questions Button */}
@@ -71,27 +73,22 @@ function MCQNavbar({
         </button>
       </div>
 
-      {/* Middle Section: Run, Submit, and Language Dropdown */}
+      {/* Right Section: Timer, Coin Count, End Contest Button, Settings, and User Icons */}
       <div className="flex items-center space-x-6">
-        <button
-          // onClick={handleRun}
-          className="bg-green-500 text-white px-6 py-2 rounded-lg shadow-md hover:bg-green-400 transition-transform transform hover:scale-105"
-        >
-          Run
-        </button>
-        <button
-          // onClick={handleSubmit}
-          className="bg-blue-500 text-white px-6 py-2 rounded-lg shadow-md hover:bg-blue-400 transition-transform transform hover:scale-105"
-        >
-          Submit
-        </button>
-      </div>
+        {/* <div className="text-lg">
+          <span>{timeLeft ? formatTime(timeLeft) : "00:00"}</span>
+        </div> */}
 
-      {/* Right Section: Timer, End Contest Button, Settings, and User Icons */}
-      <div className="flex items-center space-x-6">
-        <div className="text-lg">
-          <span>{timeLeft ? formatTime(timeLeft) : "Loading..."}</span>
+        {/* Display Coin Count */}
+        <div className="text-sm font-semibold text-white flex items-center space-x-2">
+          <span>Coins:</span>
+          <span
+            className="bg-amber-300 text-black px-3 py-1 rounded-full cursor-pointer transform transition-transform hover:bg-yellow-400 hover:scale-105"
+          >
+            {coins}
+          </span>
         </div>
+
 
         {hasStarted && !hasEnded && (
           <button
@@ -102,12 +99,25 @@ function MCQNavbar({
           </button>
         )}
 
+        {/* Profile Icon */}
+        <div className="relative">
+          <img
+            src="/path-to-logo-image.jpg" // Replace with the user's profile image
+            alt="profile"
+            className="w-10 h-10 rounded-full border-2 border-white object-cover"
+          />
+
+        </div>
+
+
+
         <button className="text-white hover:text-indigo-200 transition-colors duration-200">
           <FiSettings className="text-2xl" />
         </button>
-        <button className="text-white hover:text-indigo-200 transition-colors duration-200">
+        <button>
           <FiUser className="text-2xl" />
         </button>
+
       </div>
 
       {/* Confirmation Modal for End Contest */}
@@ -123,4 +133,8 @@ function MCQNavbar({
 }
 
 export default MCQNavbar;
+
+
+
+
 

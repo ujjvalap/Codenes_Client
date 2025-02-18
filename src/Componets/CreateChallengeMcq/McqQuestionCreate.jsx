@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 const MCQQuestionManager = ({ subjects }) => {
   const [selectedSubject, setSelectedSubject] = useState("");
   const [questions, setQuestions] = useState({});
@@ -181,5 +180,9 @@ const MCQQuestionManager = ({ subjects }) => {
 };
 
 export default MCQQuestionManager;
+
+
+
+
 
 

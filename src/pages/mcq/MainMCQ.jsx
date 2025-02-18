@@ -10,7 +10,7 @@ function MainMCQ() {
   const options = [
     "Data correctness",
     "Mere data existence",
-    "both (a) and (b)",
+    "Both (a) and (b)",
     "Data modification",
   ];
 
@@ -22,8 +22,8 @@ function MainMCQ() {
     <div className="w-full min-h-screen bg-zinc-900 flex flex-col">
       <MCQNavbar toggleQuestionList={toggleQuestionList} />
 
-      <div className="grid grid-cols-1 md:grid-cols-3 w-full h-[92vh] gap-2 p-4 relative">
-        <div className="col-span-1 md:col-span-1  bg-zinc-800 shadow-lg rounded-lg">
+      <div className="grid grid-cols-1 md:grid-cols-3 w-full flex-grow gap-2 p-4 relative">
+        <div className="col-span-1 md:col-span-1 bg-zinc-800 shadow-lg rounded-lg">
           {showQuestionList ? (
             <ShowQuestionList toggleQuestionList={toggleQuestionList} />
           ) : (
@@ -70,23 +70,35 @@ function MainMCQ() {
             ))}
           </div>
 
-          <div className="p-3 border rounded-lg bg-gray-600 border-gray-600 ">
-            <h2 className="font-semibold ">Solution description</h2>
+          <div className="p-3 border rounded-lg bg-gray-600 border-gray-600">
+            <h2 className="font-semibold">Solution Description</h2>
             <p className="text-sm text-gray-300">
-              JSON is frequently used to send and receive data from a web
-              server. The data that is sent to a web server must be a string. In
-              that scenario, the js object is converted to a string using
-              JSON.stringify().
+              JSON is frequently used to send and receive data from a web server.
+              The data that is sent to a web server must be a string. In that scenario,
+              the JS object is converted to a string using JSON.stringify().
             </p>
           </div>
         </div>
+      </div>
+
+      {/* Buttons Moved Below the Component */}
+      <div className="flex justify-center space-x-6 mt-6 pb-6">
+      <button className="bg-yellow-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-yellow-400 transition-transform transform hover:scale-105">
+              Previous
+            </button>
+        <button className="bg-green-500 text-white px-6 py-2 rounded-lg shadow-md hover:bg-green-400 transition-transform transform hover:scale-105">
+        Submit
+        </button>
+        <button className="bg-blue-500 text-white px-6 py-2 rounded-lg shadow-md hover:bg-blue-400 transition-transform transform hover:scale-105">
+          Next
+        </button>
+
+        
+
+          
       </div>
     </div>
   );
 }
 
 export default MainMCQ;
-
-
-
-
